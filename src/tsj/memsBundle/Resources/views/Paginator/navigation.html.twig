@@ -1,0 +1,37 @@
+{% set currentPage = paginator.getCurrentPage() %}
+{% set totalPages = paginator.getTotalPages() %}
+{% set params = paginator.getNavigationParams() %}
+<div class="centered">
+    <ul class="pagination">
+        {% if params.has_prev %}
+            <li><a href="{{ path('item_page', { 'page': currentPage + 1 }) }}">&laquo;</a></li>
+        {% endif %}
+        {% for page_number in params.page_max..params.page_min %}
+            {% if page_number == currentPage %}
+                <li class="active">
+                    <span>{{ page_number }}</span>
+                </li>
+            {% else %}
+                <li><a href="{{ path('item_page', { 'page': page_number }) }}">{{ page_number }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if params.has_next %}
+            <li><a href="{{ path('item_page', { 'page': currentPage - 1 }) }}">&raquo;</a></li>
+        {% endif %}
+    </ul>
+    <div class="goToContainer">
+        <form role="form" method="get" action="{{ path('item_go_to_page') }}">
+            <div class="form-inline">
+                <label for="go_to_page">Strona: </label>
+                <input id="go_to_page" type="text" name="page" class="form-control"/>
+                <input type="submit" name="go" value="Przejdź" class="btn btn-default"/>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="clearfix"></div>
+{% if params.has_next %}
+    <a href="{{ path('item_page', { 'page': currentPage - 1 }) }}" class="btn btn-block btn-default">
+        Następna strona >
+    </a>
+{% endif %}

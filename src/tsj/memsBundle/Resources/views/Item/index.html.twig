@@ -1,0 +1,40 @@
+{% extends 'tsjmemsBundle::layout.html.twig' %}
+
+{% block mainContent %}
+    <div class="clearfix"></div>
+    {% for item in pageItems %}
+        <article class="singleItem">
+            <div class="itemTitle"><a href="{{ path('item_show', { 'id': item.id }) }}">{{ item.title }}</a></div>
+            <div class="itemContent">
+                {% if item.itemtype == 'image' %}
+                    {#TODO: obrazek bedzie mial src z uploadu tsj#}
+                    <a href="{{ path('item_show', { 'id': item.id }) }}" title="{{ item.title }}">
+                        <img src="{{ item.link }}" alt="{{ item.title }}"/>
+                    </a>
+                {% endif %}
+                {#TODO: wyswietlenie linka z youtuba#}
+            </div>
+            <div class="clearfix"></div>
+            <div class="itemFooter">Tutaj share/like youtube +/-
+                {#Dodawanie do ulubionych / wyswietlanie informacji o tym, ze jest ulubiony#}
+                {% if app.user %}
+                    {% if item in app.user.getFavourites() %}
+                        <span class="pull-right">Ulubiony!</span>
+                    {% else %}
+                        {#TODO: dodawanie ajax?#}
+                        <span class="pull-right">Dodaj do ulubionych</span>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </article>
+        <div class="clearfix"></div>
+    {% endfor %}
+    <div class="navigation">
+        {% if pageItems|length > 0 and paginator.getTotalPages() > 1 %}
+            {{ include('tsjmemsBundle:Paginator:navigation.html.twig', {'paginator' : paginator}) }}
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+

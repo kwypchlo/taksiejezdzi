@@ -1,0 +1,19 @@
+tsj\memsBundle\Entity\User:
+    type:  entity
+    table: tsj_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToMany:
+        favourites:
+            targetEntity: Item
+            joinTable:
+                name: users_favourites
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    item_id:
+                        referencedColumnName: id

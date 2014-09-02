@@ -1,0 +1,42 @@
+item:
+    pattern:  /
+    defaults: { _controller: "tsjmemsBundle:Item:index" }
+
+item_page:
+    pattern:  /page/{page}
+    defaults: { _controller: "tsjmemsBundle:Item:index", page: 0 }
+
+item_go_to_page:
+    pattern: /go_to_page
+    defaults: {_controller: "tsjmemsBundle:Item:goToPage"}
+
+item_test:
+    pattern: /test
+    defaults: {_controller: "tsjmemsBundle:Item:test"}
+
+item_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tsjmemsBundle:Item:show" }
+
+item_new:
+    pattern:  /new
+    defaults: { _controller: "tsjmemsBundle:Item:new" }
+
+item_create:
+    pattern:  /create
+    defaults: { _controller: "tsjmemsBundle:Item:create" }
+    requirements: { _method: post }
+
+item_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "tsjmemsBundle:Item:edit" }
+
+item_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "tsjmemsBundle:Item:update" }
+    requirements: { _method: post|put }
+
+item_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "tsjmemsBundle:Item:delete" }
+    requirements: { _method: post|delete }

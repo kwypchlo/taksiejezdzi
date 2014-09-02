@@ -1,0 +1,40 @@
+body{
+    background: #242424
+}
+header{
+    position: fixed;
+    top:0;
+    width: 100%;
+    height: 60px;
+    background: #843534;
+    z-index: 9999;
+}
+footer{
+    width: 100%;
+    height: 100px;
+    background: #285e8e;
+}
+.containerBig
+{
+    margin: 0 auto;
+    width: 960px;
+}
+#content{
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+}
+#center{
+    margin: 0 auto;
+    width: 760px;
+    position: relative;
+    background: #121212;
+    border-left: 3px solid #000000;
+    border-right: 3px solid #000000;
+}
+.singleItem{
+    margin: 30px;
+}
+.itemContent{
+    text-align: center;
+}

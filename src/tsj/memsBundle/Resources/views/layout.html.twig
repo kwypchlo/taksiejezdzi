@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}
+            Tak się jeździ - obrazki, filmy o tematyce motoryzacyjnej
+        {% endblock %}
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/tsjmems/css/bootstrap.min.css') }}" type="text/css" media="all"/>
+        <link rel="stylesheet" href="{{ asset('bundles/tsjmems/css/style.css') }}" type="text/css" media="all"/>
+    {% endblock %}
+    {% block javascripts %}
+        {#TODO: ladniejsze ladowanie cssow/ javasciptow#}
+        <script src="{{ asset('bundles/tsjmems/js/jquery.js') }}"></script>
+        <script src="{{ asset('bundles/tsjmems/js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+    {#<link rel="shortcut icon" href="{{ asset('bundles/tsj/images/favicon.ico') }}" />#}
+    {#TODO: meta tagi description/keywords#}
+</head>
+<body>
+<header>
+    <div class="containerBig">
+        Header z menu
+    </div>
+</header>
+<div id="content">
+    <section id="center">
+        {% block mainContent %}
+        {% endblock %}
+    </section>
+    <footer>
+        <div class="containerBig">
+            Footer elo
+        </div>
+    </footer>
+</div>
+</body>
+</html>

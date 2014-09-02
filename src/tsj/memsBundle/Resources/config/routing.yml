@@ -1,0 +1,8 @@
+tsjmems_homepage:
+    pattern:  /
+    defaults: { _controller: tsjmemsBundle:Item:index }
+
+tsjmemsBundle_tsj_item:
+    resource: "@tsjmemsBundle/Resources/config/routing/item.yml"
+    prefix:   /
+

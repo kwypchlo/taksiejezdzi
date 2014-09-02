@@ -1,0 +1,10 @@
+parameters:
+      tsjmems.pagination.class : tsj\MemsBundle\Pagination\ReversePagination
+      tsjmems.pagination.perPage : 3
+      tsjmems.pagination.showFullPages: false
+      tsjmems.pagination.navigationMorePages : 2
+
+services:
+      tsjmems.pagination:
+          class: "%tsjmems.pagination.class%"
+          arguments: ["@doctrine.orm.entity_manager", "%tsjmems.pagination.perPage%", "%tsjmems.pagination.showFullPages%", "%tsjmems.pagination.navigationMorePages%"]
