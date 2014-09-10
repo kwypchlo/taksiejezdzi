@@ -79,3 +79,22 @@ fos_user:
 #uploader
 vich_uploader:
     db_driver: orm
+
+#ouath login
+hwi_oauth:
+    http_client:
+            verify_peer: false
+    connect:
+            account_connector: tsjmems.user_provider
+    firewall_name: secured_area
+    resource_owners:
+            facebook:
+                type:                facebook
+                client_id:           563620643763918
+                client_secret:       29d642c774450dba7534965e031d901c
+                options:
+                    display: popup
+    fosub:
+            username_iterations: 30
+            properties:
+                facebook: facebook_id

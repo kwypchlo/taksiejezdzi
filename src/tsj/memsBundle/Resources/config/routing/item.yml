@@ -2,6 +2,10 @@ item:
     pattern:  /
     defaults: { _controller: "tsjmemsBundle:Item:index" }
 
+item_favourites:
+    pattern: /favourites/{page}
+    defaults: { _controller: "tsjmemsBundle:Item:favourites", page: 0 }
+
 item_page:
     pattern:  /page/{page}
     defaults: { _controller: "tsjmemsBundle:Item:index", page: 0 }

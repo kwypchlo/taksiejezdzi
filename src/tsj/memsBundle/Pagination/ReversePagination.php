@@ -138,7 +138,6 @@ class ReversePagination
      */
     private function getNavigationPages()
     {
-        $navigationPages = [];
         $pagesToShow = $this->navigationAdditionalPagesCount * 2 + 1;
         if ($this->totalPages <= $pagesToShow){
             $pageMin = 1;

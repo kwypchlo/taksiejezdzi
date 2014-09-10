@@ -14,6 +14,10 @@ class User extends BaseUser
 {
     private $favourites;
 
+    private $facebook_id;
+
+    protected $facebook_access_token;
+
     public function __construct()
     {
         parent::__construct();
@@ -44,4 +48,27 @@ class User extends BaseUser
     {
         return $this->favourites;
     }
+
+    public function setFacebookId($fbId)
+    {
+        $this->facebook_id = $fbId;
+    }
+
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
+    }
+
+    public function setFacebookAccessToken($token)
+    {
+        $this->facebook_access_token = $token;
+    }
+
+    public function getFacebookAccessToken()
+    {
+        return $this->facebook_access_token;
+    }
+
+
+
 }

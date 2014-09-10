@@ -32,3 +32,8 @@ tsj\memsBundle\Entity\Item:
     lifecycleCallbacks:
         prePersist: [ setCreateValues ]
         preUpdate: [ setUpdateValues ]
+
+    manyToMany:
+        usersFavourite:
+          targetEntity: User
+          mappedBy: favourites

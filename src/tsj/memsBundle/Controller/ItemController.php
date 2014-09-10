@@ -44,6 +44,37 @@ class ItemController extends Controller
     }
 
     /**
+     * Lists all Item entities.
+     *
+     */
+    public function favouritesAction($page = 0)
+    {
+        $userId = $this->getUser()->getId();
+        $em    = $this->get('doctrine.orm.entity_manager');
+        /**
+         * Stworzenie obiektu query buildera, do pobrania odpowiedniej listy pozycji
+         * Przekazywany do paginacji
+         */
+        $qb = $em->createQueryBuilder()
+            ->select('i')
+            ->from('tsjmemsBundle:Item', 'i')
+            ->join('i.usersFavourite', 'u')
+            ->where('u.id = ?1')
+            ->orderBy('i.created_at', 'DESC')
+            ->setParameter(1, $userId);
+
+        //obiekt paginator - do zbudowania nawigacji
+        $paginator = $this->get('tsjmems.pagination');
+        //itemy dla aktualnej strony
+        $pageItems = $paginator->paginate($qb, 2);
+
+        return $this->render('tsjmemsBundle:Item:index.html.twig', array(
+            'pageItems' => $pageItems,
+            'paginator' => $paginator
+        ));
+    }
+
+    /**
      * Akcja "Idz do strony" - przekierowuje na strone wybrana w formularzu
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -58,7 +89,7 @@ class ItemController extends Controller
     public function  testAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $uId = 1;
+         $uId = 1;
         $iId = 5;
         $user = $this->getUser();
         $favouriteItem = $em->getRepository('tsjmemsBundle:Item')->find($iId);

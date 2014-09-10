@@ -3,8 +3,13 @@ parameters:
       tsjmems.pagination.perPage : 3
       tsjmems.pagination.showFullPages: false
       tsjmems.pagination.navigationMorePages : 2
+      tsjmems.user_provider.class: tsj\memsBundle\DependencyInjection\FOSUBUserProvider
 
 services:
       tsjmems.pagination:
           class: "%tsjmems.pagination.class%"
           arguments: ["@doctrine.orm.entity_manager", "%tsjmems.pagination.perPage%", "%tsjmems.pagination.showFullPages%", "%tsjmems.pagination.navigationMorePages%"]
+
+      tsjmems.user_provider:
+          class: "%tsjmems.user_provider.class%"
+          arguments: [@fos_user.user_manager,{facebook: facebook_id}]

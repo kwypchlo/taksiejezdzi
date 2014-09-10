@@ -1,6 +1,9 @@
 {% extends 'tsjmemsBundle::layout.html.twig' %}
 
 {% block mainContent %}
+    {% if not app.user %}
+        {{ include('tsjmemsBundle:Item:fbtest.html.twig', {'paginator' : paginator}) }}
+    {% endif %}
     <div class="clearfix"></div>
     {% for item in pageItems %}
         <article class="singleItem">

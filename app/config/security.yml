@@ -9,19 +9,32 @@ security:
 
             providers:
                 fos_userbundle:
-                    id: fos_user.user_provider.username
+                            id: fos_user.user_provider.username_email
 
             firewalls:
-                main:
-                    pattern: ^/
-                    form_login:
-                        provider: fos_userbundle
-                        csrf_provider: form.csrf_provider
-                    logout:       true
-                    anonymous:    true
+                secured_area:
+                            pattern: ^/
+                            anonymous: true
+                            form_login:
+                                provider: fos_userbundle
+                                csrf_provider: form.csrf_provider
+                            oauth:
+                                resource_owners:
+                                    facebook:           /login/check-facebook
+                                login_path:        /login
+                                use_forward:       false
+                                failure_path:      /login
+
+                                oauth_user_provider:
+                                    service: tsjmems.user_provider
+                            logout: true
+
+
 
             access_control:
                 - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
                 - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
                 - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
                 - { path: ^/admin/, role: ROLE_ADMIN }
+
+                - { path: ^/favourites, role: ROLE_USER }

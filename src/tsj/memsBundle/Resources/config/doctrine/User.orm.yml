@@ -6,9 +6,19 @@ tsj\memsBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+    fields:
+            facebook_id:
+              type: string
+              length: 255
+              nullable: true
+            facebook_access_token:
+              type: string
+              length: 255
+              nullable: true
     manyToMany:
         favourites:
             targetEntity: Item
+            inversedBy: usersFavourite
             joinTable:
                 name: users_favourites
                 joinColumns:

@@ -31,8 +31,11 @@ class AppKernel extends Kernel
             /**
              * Upload plikow
              */
-//            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            /**
+             * Oauth login
+             */
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

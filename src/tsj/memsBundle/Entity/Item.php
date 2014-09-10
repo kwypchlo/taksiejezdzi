@@ -59,6 +59,8 @@ class Item
      */
     private $updated_by;
 
+    private $usersFavourite;
+
 
     /**
      * Set id
